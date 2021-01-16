@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :sensorchi_service, SensorchiService.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "jhodapp",
+  password: "",
   database: "sensorchi_service_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
