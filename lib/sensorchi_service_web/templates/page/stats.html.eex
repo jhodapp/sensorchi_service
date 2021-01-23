@@ -1,0 +1,11 @@
+<h2>Sensor Stats</h2>
+<div class="phx-hero">
+    <p>
+    Current temp: <%= @stats.temp |> Decimal.from_float() |> Decimal.round(1) %> C <br/>
+    Current humidity: <%= @stats.humidity  |> Decimal.from_float() |> Decimal.round(1) %>% <br/>
+    Current pressure: <%= @stats.pressure %> mb <br/>
+    Current dust concentration: <%= @stats.dust_concentration |> Decimal.from_float() |> Decimal.round(0) %> pieces/liter <br/>
+    Current air purity: <%= @stats.air_purity %> <br/>
+    Readings from <%= @stats.inserted_at %>
+    </p>
+</div

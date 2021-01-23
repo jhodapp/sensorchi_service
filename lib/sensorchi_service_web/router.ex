@@ -17,12 +17,16 @@ defmodule SensorchiServiceWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/stats", PageController, :show_stats
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SensorchiServiceWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", SensorchiServiceWeb do
+    pipe_through :api
+
+    post "/sensors", PageController, :sensors_push_json
+  end
 
   # Enables LiveDashboard only for development
   #
