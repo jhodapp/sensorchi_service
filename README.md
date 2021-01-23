@@ -7,7 +7,7 @@ To start your Phoenix server:
   * Install Node.js dependencies with `npm install` inside the `assets` directory
   * Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000/status`](http://localhost:4000/stats) from your browser to view live IoT sensor readings such as:
+Now you can visit [`localhost:4000/stats`](http://localhost:4000/stats) from your browser to view live IoT sensor readings such as:
   * Temperature
   * Humidity
   * Pressure
