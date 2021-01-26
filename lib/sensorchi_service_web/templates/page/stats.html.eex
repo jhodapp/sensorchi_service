@@ -6,6 +6,15 @@
     Current pressure: <%= @stats.pressure %> mb <br/>
     Current dust concentration: <%= @stats.dust_concentration |> Decimal.from_float() |> Decimal.round(0) %> pieces/liter <br/>
     Current air purity: <%= @stats.air_purity %> <br/>
-    Readings from <%= @stats.inserted_at %>
+    <hr/>
+    Average temp: <%= @stats.average_temp |> Decimal.from_float() |> Decimal.round(1) %> C <br/>
+    Max temp: <%= @stats.max_temp |> Decimal.from_float() |> Decimal.round(1) %> C <br/>
+    Min temp: <%= @stats.min_temp |> Decimal.from_float() |> Decimal.round(1) %> C <br/>
+    <hr/>
+    Average humidity: <%= @stats.average_humidity |> Decimal.from_float() |> Decimal.round(1) %>%  <br/>
+    Max humidity: <%= @stats.max_humidity |> Decimal.from_float() |> Decimal.round(1) %>% <br/>
+    Min humidity: <%= @stats.min_humidity |> Decimal.from_float() |> Decimal.round(1) %>% <br/>
+    <hr/>
+    Readings from <%= @stats.first_inserted_at %> <--> <%= @stats.last_inserted_at %>
     </p>
 </div

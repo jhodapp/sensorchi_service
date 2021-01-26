@@ -17,6 +17,5 @@ defmodule SensorchiService.Sensor do
     sensor
     |> cast(attrs, [:temperature, :humidity, :dust_concentration, :pressure, :air_purity])
     |> validate_required([:temperature, :humidity, :dust_concentration, :pressure, :air_purity])
-    #|> validate_required([:temperature, :humidity])
   end
 end

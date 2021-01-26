@@ -14,7 +14,14 @@ defmodule SensorchiServiceWeb.PageController do
               pressure: get_last_pressure(),
               dust_concentration: get_last_dust_concentration(),
               air_purity: get_last_air_purity(),
-              inserted_at: get_last_inserted_at()
+              average_temp: get_average_temp(),
+              max_temp: get_max_temp(),
+              min_temp: get_min_temp(),
+              average_humidity: get_average_humidity(),
+              max_humidity: get_max_humidity(),
+              min_humidity: get_min_humidity(),
+              last_inserted_at: get_last_inserted_at(),
+              first_inserted_at: get_first_inserted_at()
     }
     render(conn, "stats.html", stats: stats)
   end
@@ -54,11 +61,43 @@ defmodule SensorchiServiceWeb.PageController do
     get_last_row().air_purity
   end
 
+  defp get_average_temp() do
+    Repo.aggregate(SensorchiService.Sensor, :avg, :temperature)
+  end
+
+  defp get_max_temp() do
+    Repo.aggregate(SensorchiService.Sensor, :max, :temperature)
+  end
+
+  defp get_min_temp() do
+    Repo.aggregate(SensorchiService.Sensor, :min, :temperature)
+  end
+
+  defp get_average_humidity() do
+    Repo.aggregate(SensorchiService.Sensor, :avg, :humidity)
+  end
+
+  defp get_max_humidity() do
+    Repo.aggregate(SensorchiService.Sensor, :max, :humidity)
+  end
+
+  defp get_min_humidity() do
+    Repo.aggregate(SensorchiService.Sensor, :min, :humidity)
+  end
+
   defp get_last_inserted_at() do
     get_last_row().inserted_at
   end
 
+  defp get_first_inserted_at() do
+    get_first_row().inserted_at
+  end
+
   defp get_last_row() do
     Repo.one(from s in SensorchiService.Sensor, order_by: [desc: s.id], limit: 1)
+  end
+
+  defp get_first_row() do
+    Repo.one(from s in SensorchiService.Sensor, order_by: [asc: s.id], limit: 1)
   end
 end
