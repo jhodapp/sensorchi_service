@@ -20,6 +20,7 @@ defmodule SensorchiServiceWeb.PageController do
               average_humidity: get_average_humidity(),
               max_humidity: get_max_humidity(),
               min_humidity: get_min_humidity(),
+              readings_count: get_readings_count(),
               last_inserted_at: get_last_inserted_at(),
               first_inserted_at: get_first_inserted_at()
     }
@@ -99,5 +100,9 @@ defmodule SensorchiServiceWeb.PageController do
 
   defp get_first_row() do
     Repo.one(from s in SensorchiService.Sensor, order_by: [asc: s.id], limit: 1)
+  end
+
+  defp get_readings_count() do
+    Repo.aggregate(SensorchiService.Sensor, :count, :id)
   end
 end
